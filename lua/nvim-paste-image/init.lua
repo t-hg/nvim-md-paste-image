@@ -1,3 +1,5 @@
+print("hello from nvim-paste-image")
+
 local function paste_image()
   print("function paste_image")
 end
