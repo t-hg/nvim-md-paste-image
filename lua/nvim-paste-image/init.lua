@@ -10,7 +10,7 @@ local function paste_image()
   local image_file_name = date .. "_" .. random_number .. ".png"
   local image_file_path = image_dir .. "/" .. image_file_name
   os.execute("touch " .. image_file_path)
-  local row, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "![image](" .. image_file_path .. ")" })
 end
 
