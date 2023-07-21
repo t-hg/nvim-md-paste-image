@@ -15,7 +15,7 @@ local function paste_image()
     error("Failure in copying image data from clipboard to " .. image_file_path)
   end
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, {" ![image](" .. image_file_path .. ")" })
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, {"![image](" .. image_file_path .. ")" })
 end
 
 local function setup()
