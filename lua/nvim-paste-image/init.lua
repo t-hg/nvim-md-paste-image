@@ -11,7 +11,7 @@ local function paste_image()
   local date = os.date("%Y-%m-%d_%H-%M-%S")
   local image_file_name = date .. "_" .. random_number .. ".png"
   local image_file_path = image_dir .. "/" .. image_file_name
-  if os.execute("powershell.exe -c \"(get-clipboard -format image).save('" .. image_file_path .. "')\"") ~= 0 then
+  if os.execute("powershell.exe -c \"(get-clipboard -format image).save('" .. image_file_path .. "')\" > /dev/null") ~= 0 then
     error("Failure in copying image data from clipboard to " .. image_file_path)
   end
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
