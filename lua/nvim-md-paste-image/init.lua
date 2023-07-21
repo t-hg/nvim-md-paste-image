@@ -1,4 +1,4 @@
-print("hello from nvim-paste-image")
+print("hello from nvim-md-paste-image")
 
 local function paste_image()
   print("function paste_image")
