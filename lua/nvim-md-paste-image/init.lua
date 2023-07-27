@@ -1,3 +1,7 @@
+-- workaround to satisfy linter that
+-- does not know about global vim variable
+vim = vim
+
 local function paste_image()
   local image_dir = "./_img"
 
