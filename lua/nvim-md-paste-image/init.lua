@@ -1,5 +1,8 @@
+-- satisfy linter
+vim = vim
+
 local function paste_image()
-  local image_dir = "./_img"
+  local image_dir = vim.fn.expand("%:h") .. "./_img"
 
   if os.execute("mkdir -p " .. image_dir) ~= 0 then
     error("Could not create image dir: " .. image_dir)
