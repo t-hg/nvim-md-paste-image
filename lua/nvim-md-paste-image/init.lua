@@ -1,4 +1,5 @@
--- satisfy linter
+-- workaround to satisfy linter that
+-- does not know about global vim variable
 vim = vim
 
 local function paste_image()
