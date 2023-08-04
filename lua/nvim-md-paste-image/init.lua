@@ -5,7 +5,7 @@ vim = vim
 local function paste_image()
   -- directory name where images are stored
   local image_dir_name = "_img"
-  -- relative image directory path from current working directory 
+  -- relative image directory path from current working directory
   local image_dir_path_from_cwd = vim.fn.expand("%:h") .. "/" .. image_dir_name
   -- relative image directory path from current buffer
   local image_dir_path_from_buffer = "./" .. image_dir_name
@@ -24,14 +24,18 @@ local function paste_image()
   local image_file_path_from_cwd = image_dir_path_from_cwd .. "/" .. image_file_name
   local image_file_path_from_buffer = image_dir_path_from_buffer .. "/" .. image_file_name
 
-  -- this plugin currently works for my use case where I 
+  -- this plugin currently works for my use case where I
   -- mainly use WSL for my work.
-  if os.execute("powershell.exe -c \"(get-clipboard -format image).save('" .. image_file_path_from_cwd .. "')\" > /dev/null") ~= 0 then
+  if
+    os.execute(
+      "powershell.exe -c \"(get-clipboard -format image).save('" .. image_file_path_from_cwd .. "')\" > /dev/null"
+    ) ~= 0
+  then
     error("Failure in copying image data from clipboard to " .. image_file_path_from_cwd)
   end
 
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, {"![image](" .. image_file_path_from_buffer .. ")" })
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "![image](" .. image_file_path_from_buffer .. ")" })
 end
 
 local function setup()
@@ -39,5 +43,5 @@ local function setup()
 end
 
 return {
-  setup = setup
+  setup = setup,
 }
