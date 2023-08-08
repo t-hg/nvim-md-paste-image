@@ -3,11 +3,11 @@
 vim = vim
 
 local function paste_image()
-  -- directory name where images are stored
+  local cwd = vim.fn.getcwd() .. "/"
+  local current_dir_abs_path = vim.fn.expand("%:p:h")
+  local current_dir_path_from_cwd = string.gsub(current_dir_abs_path, cwd, "", 1)
   local image_dir_name = "_img"
-  -- relative image directory path from current working directory
-  local image_dir_path_from_cwd = vim.fn.expand("%:h") .. "/" .. image_dir_name
-  -- relative image directory path from current buffer
+  local image_dir_path_from_cwd = current_dir_path_from_cwd.. "/" .. image_dir_name
   local image_dir_path_from_buffer = "./" .. image_dir_name
 
   if os.execute("mkdir -p " .. image_dir_path_from_cwd) ~= 0 then
