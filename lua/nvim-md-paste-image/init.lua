@@ -5,7 +5,7 @@ vim = vim
 local function paste_image()
   local cwd = vim.fn.getcwd() .. "/"
   local current_dir_abs_path = vim.fn.expand("%:p:h")
-  local current_dir_path_from_cwd = string.gsub(current_dir_abs_path, cwd, "", 1)
+  local current_dir_path_from_cwd = string.sub(current_dir_abs_path, cwd:len() + 1)
   local image_dir_name = "_img"
   local image_dir_path_from_cwd = current_dir_path_from_cwd.. "/" .. image_dir_name
   local image_dir_path_from_buffer = "./" .. image_dir_name
